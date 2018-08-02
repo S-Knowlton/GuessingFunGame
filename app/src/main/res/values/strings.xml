@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Guessing Fun Game</string>
+    <string name="play_text">Play!</string>
+    <string name="instructions">Hello and welcome! In this game you will be shown an image and you
+        will try to guess the matching game title. Good luck!</string>
+
+    <string name="game_10">Neverwinter Nights</string>
+    <string name="game_9">Spacewar</string>
+    <string name="game_8">Elite</string>
+    <string name="game_7">Minesweeper</string>
+    <string name="game_6">Half Life</string>
+    <string name="game_5">Civilization</string>
+    <string name="game_4">World of Warcraft</string>
+    <string name="game_3">The Sims</string>
+    <string name="game_2">Tetris</string>
+    <string name="game_1">Doom</string>
+
+
+</resources>
