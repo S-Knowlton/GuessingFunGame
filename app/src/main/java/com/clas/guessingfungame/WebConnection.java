@@ -25,7 +25,7 @@ public class WebConnection extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         URL url = null;
         try {
-            url = new URL("https://www.android.com");
+            url = new URL("https://www.pcauthority.com.au/news/top-10-computer-games-of-all-time-170181");
             downloadUrl(url);
         } catch (MalformedURLException e) {
             e.printStackTrace();
