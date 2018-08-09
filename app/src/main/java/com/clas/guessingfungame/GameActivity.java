@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class GameActivity extends AppCompatActivity {
-    private GameFragment[] questions;
+//    private GameFragment[] questions;
     private int currentActivity;
     private String[] games;
     private String[] options;
@@ -28,57 +28,23 @@ public class GameActivity extends AppCompatActivity {
         Intent i = getIntent();
         currentActivity = i.getIntExtra("position", 0);
         games = i.getStringArrayExtra("collection");
+        build();
 //        questions = GenerateQuizPages();
-//        currentActivity = 0;
-//        FragmentManager fm = getFragmentManager();
-//        FragmentTransaction ft = fm.beginTransaction();
-//        ft.replace(R.id.quiz_frag, new GameFragment());
-//        ft.commit();
     }
-
-//    protected void onClickStart() {
-////        setContentView(R.layout.activity_game);
-//        FragmentManager fm = getFragmentManager();
-//        FragmentTransaction ft = fm.beginTransaction();
-//        ft.replace(R.id.quiz_frag, new GameFragment(), "tag");
-//        ft.commit();
-//        GameFragment gf = (GameFragment) getSupportFragmentManager().findFragmentByTag("tag");
-//    }
 
     public void onCorrect() {
         currentActivity++;
-//        setContentView(R.layout.activity_game);
-////        FragmentManager fm = getFragmentManager();
-////        FragmentTransaction ft = fm.beginTransaction();
-////        ft.replace(R.id.quiz_frag, questions[currentActivity]);
-////        ft.commit();
         Intent i = new Intent(this, GameActivity.class);
         i.putExtra("collection", games);
         i.putExtra("position", currentActivity);
         startActivity(i);
     }
 
-
     private void build(){
-        create(getRandomOptions(games, games[currentActivity]),games[currentActivity],getGamePics()[currentActivity]);
-    }
+        String[] ops = getRandomOptions(games, games[currentActivity]);
+        String game = games[currentActivity];
 
-
-    private GameFragment[] GenerateQuizPages(){
-        GameFragment[] output = new GameFragment[10];
-        String[] names = getGameNames();
-        int[] imgs = getGamePics();
-
-        for(int i = 0; i < names.length; i++){
-            //GameFragment temp = (GameFragment)getFragmentManager().findFragmentById(R.id.quiz_frag);
-            GameFragment temp = new GameFragment();
-            String answer = names[i];
-            String[] options = getRandomOptions(names, answer);
-            int img = imgs[i];
-            temp.create( options, answer, img);
-            output[i] = temp;
-        }
-        return output;
+        create(ops, game, getGamePics()[currentActivity]);
     }
 
     private String[] getGameNames(){
@@ -140,6 +106,7 @@ public class GameActivity extends AppCompatActivity {
     private boolean isRight(String s){
         return s.equalsIgnoreCase(answer);
     }
+
     public void create(String[] options, String answer, int pic){
         //setContentView(view);
         image = findViewById(R.id.imageView);
@@ -148,6 +115,7 @@ public class GameActivity extends AppCompatActivity {
         this.options = options;
         setButtonText();
     }
+
     private void setButtonText(){
         ArrayList<Integer> ids = new ArrayList<Integer>();
         ids.add(R.id.radioButton);
@@ -163,4 +131,38 @@ public class GameActivity extends AppCompatActivity {
             ids.remove(num);
         }
     }
+
+
+
+
+//        FragmentManager fm = getFragmentManager();
+//        FragmentTransaction ft = fm.beginTransaction();
+//        ft.replace(R.id.quiz_frag, questions[currentActivity]);
+//        ft.commit();
+
+//    private GameFragment[] GenerateQuizPages(){
+//        GameFragment[] output = new GameFragment[10];
+//        String[] names = getGameNames();
+//        int[] imgs = getGamePics();
+//
+//        for(int i = 0; i < names.length; i++){
+//            //GameFragment temp = (GameFragment)getFragmentManager().findFragmentById(R.id.quiz_frag);
+//            GameFragment temp = new GameFragment();
+//            String answer = names[i];
+//            String[] options = getRandomOptions(names, answer);
+//            int img = imgs[i];
+//            temp.create( options, answer, img);
+//            output[i] = temp;
+//        }
+//        return output;
+//    }
+
+//    protected void onClickStart() {
+////        setContentView(R.layout.activity_game);
+//        FragmentManager fm = getFragmentManager();
+//        FragmentTransaction ft = fm.beginTransaction();
+//        ft.replace(R.id.quiz_frag, new GameFragment(), "tag");
+//        ft.commit();
+//        GameFragment gf = (GameFragment) getSupportFragmentManager().findFragmentByTag("tag");
+//    }
 }
