@@ -4,7 +4,6 @@
     <string name="instructions">Hello and welcome! In this game you will be shown an image and you
         will try to guess the matching game title. Good luck!</string>
     <string name="start">Start</string>
-
     <string name="game_10">Neverwinter Nights</string>
     <string name="game_9">Spacewar</string>
     <string name="game_8">Elite</string>
@@ -15,6 +14,8 @@
     <string name="game_3">The Sims</string>
     <string name="game_2">Tetris</string>
     <string name="game_1">Doom</string>
+
+
 
 
 </resources>

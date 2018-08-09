@@ -4,11 +4,15 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -21,6 +25,7 @@ public class GameActivity extends AppCompatActivity {
     private String answer;
     private ImageView image;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +35,79 @@ public class GameActivity extends AppCompatActivity {
         games = i.getStringArrayExtra("collection");
         build();
 //        questions = GenerateQuizPages();
+    }
+
+//    protected void onClickStart() {
+////        setContentView(R.layout.activity_game);
+//        FragmentManager fm = getFragmentManager();
+//        FragmentTransaction ft = fm.beginTransaction();
+//        ft.replace(R.id.quiz_frag, new GameFragment(), "tag");
+//        ft.commit();
+//        GameFragment gf = (GameFragment) getSupportFragmentManager().findFragmentByTag("tag");
+
+
+//    }
+
+    public void OnRadioButtonClicked(View w){
+
+        RadioButton  rb1 = (RadioButton) findViewById(R.id.radioButton);
+        RadioButton  rb2 = (RadioButton) findViewById(R.id.radioButton2);
+        RadioButton  rb3 = (RadioButton) findViewById(R.id.radioButton3);
+        RadioButton  rb4 = (RadioButton) findViewById(R.id.radioButton4);
+        Random random = new Random();
+
+        boolean checked = ((RadioButton) w).isChecked();
+
+        switch (w.getId()){
+
+            case R.id.radioButton:
+                if(checked)
+
+                    rb1.setTypeface(null, Typeface.BOLD_ITALIC);
+                    rb2.setTypeface(null, Typeface.NORMAL);
+                    rb3.setTypeface(null, Typeface.NORMAL);
+                    rb4.setTypeface(null, Typeface.NORMAL);
+
+
+
+                if(isRight((rb1).getText().toString())){
+                    Toast.makeText(GameActivity.this, "Correct!", Toast.LENGTH_LONG).show();
+                    onCorrect();
+
+                }
+                else{
+                    Toast.makeText(GameActivity.this, "Wrong!", Toast.LENGTH_LONG).show();
+                }
+
+
+                    break;
+
+            case R.id.radioButton2:
+                if(checked)
+                    rb1.setTypeface(null, Typeface.NORMAL);
+                    rb2.setTypeface(null, Typeface.BOLD_ITALIC);
+                    rb3.setTypeface(null, Typeface.NORMAL);
+                    rb4.setTypeface(null, Typeface.NORMAL);
+                    isRight((rb1).getText().toString());
+                    break;
+
+            case R.id.radioButton3:
+                if(checked)
+                    rb1.setTypeface(null, Typeface.NORMAL);
+                    rb2.setTypeface(null, Typeface.NORMAL);
+                    rb3.setTypeface(null, Typeface.BOLD_ITALIC);
+                    rb4.setTypeface(null, Typeface.NORMAL);
+                    isRight((rb1).getText().toString());
+                break;
+            case R.id.radioButton4:
+                if(checked)
+                    rb1.setTypeface(null, Typeface.NORMAL);
+                    rb2.setTypeface(null, Typeface.NORMAL);
+                    rb3.setTypeface(null, Typeface.NORMAL);
+                    rb4.setTypeface(null, Typeface.BOLD_ITALIC);
+                    isRight((rb1).getText().toString());
+                break;
+        }
     }
 
     public void onCorrect() {
