@@ -208,6 +208,10 @@ public class GameActivity extends AppCompatActivity {
             b.setText(options[i++]);
             ids.remove(num);
         }
+        options[0] = ((Button)findViewById(ids.get(R.id.radioButton))).getText().toString();
+        options[1] = ((Button)findViewById(ids.get(R.id.radioButton4))).getText().toString();
+        options[2] = ((Button)findViewById(ids.get(R.id.radioButton3))).getText().toString();
+        options[3] = ((Button)findViewById(ids.get(R.id.radioButton2))).getText().toString();
     }
 
 
