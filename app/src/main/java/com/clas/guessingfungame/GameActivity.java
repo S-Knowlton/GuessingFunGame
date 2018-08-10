@@ -111,15 +111,15 @@ public class GameActivity extends AppCompatActivity {
 
     public void onCorrect() {
         if(currentActivity==9){
-//            Intent i = new Intent(this, .class);
-//            i.putExtra("score", score++);
-//            startActivity(i);
+            Intent i = new Intent(this, ScoreActivity.class);
+            i.putExtra("score", ++score);
+            startActivity(i);
         }else{
             currentActivity++;
             Intent i = new Intent(this, GameActivity.class);
             i.putExtra("collection", games);
             i.putExtra("position", currentActivity);
-            i.putExtra("score", score++);
+            i.putExtra("score", ++score);
             startActivity(i);
         }
 
