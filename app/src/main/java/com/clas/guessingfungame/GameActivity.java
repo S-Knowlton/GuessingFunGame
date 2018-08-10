@@ -25,6 +25,7 @@ public class GameActivity extends AppCompatActivity {
     private String[] options;
     private String answer;
     private ImageView image;
+    private int score;
 
 
     @Override
@@ -34,6 +35,7 @@ public class GameActivity extends AppCompatActivity {
         Intent i = getIntent();
         currentActivity = i.getIntExtra("position", 0);
         games = i.getStringArrayExtra("collection");
+        score = i.getIntExtra("score", 0);
         build();
 
         RadioGroup rGroup = (RadioGroup) findViewById(R.id.radioGroup);
@@ -108,11 +110,19 @@ public class GameActivity extends AppCompatActivity {
     }
 
     public void onCorrect() {
-        currentActivity++;
-        Intent i = new Intent(this, GameActivity.class);
-        i.putExtra("collection", games);
-        i.putExtra("position", currentActivity);
-        startActivity(i);
+        if(currentActivity==9){
+//            Intent i = new Intent(this, .class);
+//            i.putExtra("score", score++);
+//            startActivity(i);
+        }else{
+            currentActivity++;
+            Intent i = new Intent(this, GameActivity.class);
+            i.putExtra("collection", games);
+            i.putExtra("position", currentActivity);
+            i.putExtra("score", score++);
+            startActivity(i);
+        }
+
     }
 
     private void build(){
