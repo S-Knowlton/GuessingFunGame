@@ -35,25 +35,9 @@ public class GameActivity extends AppCompatActivity {
         currentActivity = i.getIntExtra("position", 0);
         games = i.getStringArrayExtra("collection");
         build();
-//        questions = GenerateQuizPages();
-    }
-
-//    protected void onClickStart() {
-////        setContentView(R.layout.activity_game);
-//        FragmentManager fm = getFragmentManager();
-//        FragmentTransaction ft = fm.beginTransaction();
-//        ft.replace(R.id.quiz_frag, new GameFragment(), "tag");
-//        ft.commit();
-//        GameFragment gf = (GameFragment) getSupportFragmentManager().findFragmentByTag("tag");
-
-
-//    }
-
-    public void OnRadioButtonClicked(View w){
-
-
 
         RadioGroup rGroup = (RadioGroup) findViewById(R.id.radioGroup);
+        //boolean isChecked = ((RadioButton)w).isChecked();
 
         rGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
         {
@@ -63,15 +47,16 @@ public class GameActivity extends AppCompatActivity {
                 RadioButton  rb2 = (RadioButton) findViewById(R.id.radioButton2);
                 RadioButton  rb3 = (RadioButton) findViewById(R.id.radioButton3);
                 RadioButton  rb4 = (RadioButton) findViewById(R.id.radioButton4);
-                    if(checkedId == R.id.radioButton){
-                        if(isRight((rb1).getText().toString())){
-                            Toast.makeText(GameActivity.this, "Correct!", Toast.LENGTH_SHORT).show();
-                            onCorrect();
-                        }
-                        else{
-                            Toast.makeText(GameActivity.this, "Wrong!", Toast.LENGTH_SHORT).show();
-                        }
+
+                if(checkedId == R.id.radioButton){
+                    if(isRight((rb1).getText().toString())){
+                        Toast.makeText(GameActivity.this, "Correct!", Toast.LENGTH_SHORT).show();
+                        onCorrect();
                     }
+                    else{
+                        Toast.makeText(GameActivity.this, "Wrong!", Toast.LENGTH_SHORT).show();
+                    }
+                }
                 if(checkedId == R.id.radioButton2){
                     if(isRight((rb2).getText().toString())){
                         Toast.makeText(GameActivity.this, "Correct!", Toast.LENGTH_SHORT).show();
@@ -104,6 +89,22 @@ public class GameActivity extends AppCompatActivity {
                 }
             }
         });
+//        questions = GenerateQuizPages();
+    }
+
+//    protected void onClickStart() {
+////        setContentView(R.layout.activity_game);
+//        FragmentManager fm = getFragmentManager();
+//        FragmentTransaction ft = fm.beginTransaction();
+//        ft.replace(R.id.quiz_frag, new GameFragment(), "tag");
+//        ft.commit();
+//        GameFragment gf = (GameFragment) getSupportFragmentManager().findFragmentByTag("tag");
+
+
+//    }
+
+    public void OnRadioButtonClicked(View w){
+
     }
 
     public void onCorrect() {
