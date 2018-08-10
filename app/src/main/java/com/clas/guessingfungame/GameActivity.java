@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -50,64 +51,59 @@ public class GameActivity extends AppCompatActivity {
 
     public void OnRadioButtonClicked(View w){
 
-        RadioButton  rb1 = (RadioButton) findViewById(R.id.radioButton);
-        RadioButton  rb2 = (RadioButton) findViewById(R.id.radioButton2);
-        RadioButton  rb3 = (RadioButton) findViewById(R.id.radioButton3);
-        RadioButton  rb4 = (RadioButton) findViewById(R.id.radioButton4);
-        Random random = new Random();
-
-        boolean checked = ((RadioButton) w).isChecked();
-
-        switch (w.getId()){
-
-            case R.id.radioButton:
-                if(checked)
-
-                    rb1.setTypeface(null, Typeface.BOLD_ITALIC);
-                    rb2.setTypeface(null, Typeface.NORMAL);
-                    rb3.setTypeface(null, Typeface.NORMAL);
-                    rb4.setTypeface(null, Typeface.NORMAL);
 
 
+        RadioGroup rGroup = (RadioGroup) findViewById(R.id.radioGroup);
 
-                if(isRight((rb1).getText().toString())){
-                    Toast.makeText(GameActivity.this, "Correct!", Toast.LENGTH_LONG).show();
-                    onCorrect();
+        rGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
+        {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId){
+                RadioButton  rb1 = (RadioButton) findViewById(R.id.radioButton);
+                RadioButton  rb2 = (RadioButton) findViewById(R.id.radioButton2);
+                RadioButton  rb3 = (RadioButton) findViewById(R.id.radioButton3);
+                RadioButton  rb4 = (RadioButton) findViewById(R.id.radioButton4);
+                    if(checkedId == R.id.radioButton){
+                        if(isRight((rb1).getText().toString())){
+                            Toast.makeText(GameActivity.this, "Correct!", Toast.LENGTH_SHORT).show();
+                            onCorrect();
+                        }
+                        else{
+                            Toast.makeText(GameActivity.this, "Wrong!", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                if(checkedId == R.id.radioButton2){
+                    if(isRight((rb2).getText().toString())){
+                        Toast.makeText(GameActivity.this, "Correct!", Toast.LENGTH_SHORT).show();
+                        onCorrect();
 
+                    }
+                    else{
+                        Toast.makeText(GameActivity.this, "Wrong!", Toast.LENGTH_SHORT).show();
+                    }
                 }
-                else{
-                    Toast.makeText(GameActivity.this, "Wrong!", Toast.LENGTH_LONG).show();
+                if(checkedId == R.id.radioButton3){
+                    if(isRight((rb3).getText().toString())){
+                        Toast.makeText(GameActivity.this, "Correct!", Toast.LENGTH_SHORT).show();
+                        onCorrect();
+
+                    }
+                    else{
+                        Toast.makeText(GameActivity.this, "Wrong!", Toast.LENGTH_SHORT).show();
+                    }
                 }
+                if(checkedId == R.id.radioButton4){
+                    if(isRight((rb4).getText().toString())){
+                        Toast.makeText(GameActivity.this, "Correct!", Toast.LENGTH_SHORT).show();
+                        onCorrect();
 
-
-                    break;
-
-            case R.id.radioButton2:
-                if(checked)
-                    rb1.setTypeface(null, Typeface.NORMAL);
-                    rb2.setTypeface(null, Typeface.BOLD_ITALIC);
-                    rb3.setTypeface(null, Typeface.NORMAL);
-                    rb4.setTypeface(null, Typeface.NORMAL);
-                    isRight((rb1).getText().toString());
-                    break;
-
-            case R.id.radioButton3:
-                if(checked)
-                    rb1.setTypeface(null, Typeface.NORMAL);
-                    rb2.setTypeface(null, Typeface.NORMAL);
-                    rb3.setTypeface(null, Typeface.BOLD_ITALIC);
-                    rb4.setTypeface(null, Typeface.NORMAL);
-                    isRight((rb1).getText().toString());
-                break;
-            case R.id.radioButton4:
-                if(checked)
-                    rb1.setTypeface(null, Typeface.NORMAL);
-                    rb2.setTypeface(null, Typeface.NORMAL);
-                    rb3.setTypeface(null, Typeface.NORMAL);
-                    rb4.setTypeface(null, Typeface.BOLD_ITALIC);
-                    isRight((rb1).getText().toString());
-                break;
-        }
+                    }
+                    else{
+                        Toast.makeText(GameActivity.this, "Wrong!", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+        });
     }
 
     public void onCorrect() {

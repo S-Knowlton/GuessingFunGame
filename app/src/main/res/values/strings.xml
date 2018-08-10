@@ -3,6 +3,7 @@
     <string name="play_text">Play!</string>
     <string name="instructions">Hello and welcome! In this game you will be shown an image and you
         will try to guess the matching game title. Good luck!</string>
+    <string name="score">Here is your score: </string>
     <string name="start">Start</string>
     <string name="game_10">Neverwinter Nights</string>
     <string name="game_9">Spacewar</string>
